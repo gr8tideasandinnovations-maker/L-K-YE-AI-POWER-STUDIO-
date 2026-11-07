@@ -66,7 +66,7 @@ export default function App() {
     setMessage('');
 
     try {
-      const response = await fetch('/.netlify/functions/chat', {
+      
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
