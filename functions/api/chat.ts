@@ -3,6 +3,15 @@ interface Env {
   GEMINI_API_KEY: string;
 }
 
+const allowedDepartments = [
+  "AI Assistant",
+  "AI Coding Studio",
+  "Academic Centre",
+  "Business Intelligence",
+  "Language Centre",
+  "Creative Studio",
+];
+
 export async function onRequestPost({
   request,
   env,
