@@ -79,7 +79,15 @@ export default function App() {
 
       const data = await response.json();
 
-    
+ if (!response.ok) {
+  const statusInfo = data.providerStatus
+    ? ` (Gemini status: ${data.providerStatus})`
+    : ` (HTTP status: ${response.status})`;
+
+  throw new Error(
+    (data.error || 'The AI service could not respond.') + statusInfo
+  );
+ }   
 
       setReply(
         data.reply || 'I could not generate a response.'
