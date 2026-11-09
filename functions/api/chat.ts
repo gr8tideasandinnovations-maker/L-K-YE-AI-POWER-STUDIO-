@@ -35,7 +35,7 @@ export async function onRequestPost({
 const { message, language, department } = body;  
 
   if (!message || typeof message !== "string" || !message.trim()) {
-  return new Response(
+      return new Response(
     JSON.stringify({ error: "Please enter a message." }),
     { status: 400, headers }
   );
@@ -44,7 +44,7 @@ if (
   department &&
   !allowedDepartments.includes(department)
 ) {
-  return new Response(
+    return new Response(
     JSON.stringify({ error: "Invalid department selected." }),
     { status: 400, headers }
   );
