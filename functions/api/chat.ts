@@ -125,15 +125,5 @@ User message: ${message}`;
     );
 
   
-  } catch (error) {
-    console.error("LAAKAYE AI Function exception:", error);
 
-    return new Response(
-      JSON.stringify({
-        error: "The AI service encountered an error. Please try again."
-      }),
-      { status: 500, headers }
-    );
-  }
-          }
       
