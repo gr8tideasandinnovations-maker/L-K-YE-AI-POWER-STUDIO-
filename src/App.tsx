@@ -16,7 +16,14 @@ import {
   X
 } from 'lucide-react';
 
-
+const languages = [
+  'English',
+  'Nigerian Pidgin',
+  'Yoruba',
+  'Igbo',
+  'Hausa',
+  'French'
+];
 const tools = [
   {
     name: 'AI Assistant',
