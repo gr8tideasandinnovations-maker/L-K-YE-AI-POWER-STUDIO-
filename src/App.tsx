@@ -17,6 +17,98 @@ import {
 } from 'lucide-react';
 
 
+const tools = [
+  {
+    name: 'AI Assistant',
+    icon: MessageCircle,
+    description: 'Ask questions and get intelligent answers.',
+    welcome: 'Your personal AI companion is ready. Ask questions, explore ideas and solve problems.',
+    prompts: [
+      'Explain an interesting new technology.',
+      'Help me solve a difficult problem.',
+      'Give me ideas for a new project.'
+    ]
+  },
+  {
+    name: 'AI Coding Studio',
+    icon: Code,
+    description: 'Write, explain and improve code.',
+    welcome: 'Welcome to your coding workspace. Learn programming, understand code and build software.',
+    prompts: [
+      'Teach me JavaScript from the beginning.',
+      'Help me build a mobile-friendly website.',
+      'Explain how APIs work.'
+    ]
+  },
+  {
+    name: 'Academic Centre',
+    icon: GraduationCap,
+    description: 'Research, learning and study support.',
+    welcome: 'Your learning workspace is ready. Explore academic subjects, research and study effectively.',
+    prompts: [
+      'Explain a difficult academic topic.',
+      'Help me prepare a study timetable.',
+      'Help me understand data science.'
+    ]
+  },
+  {
+    name: 'Business Intelligence',
+    icon: BriefcaseBusiness,
+    description: 'Business planning and data analysis.',
+    welcome: 'Welcome to your business workspace. Explore business ideas, planning, management and analytics.',
+    prompts: [
+      'Help me write a business plan.',
+      'Design a cooperative management application.',
+      'Explain how to analyse business data.'
+    ]
+  },
+  {
+    name: 'Language Centre',
+    icon: Languages,
+    description: 'Communicate across languages.',
+    welcome: 'Your language workspace is ready. Practise languages, translate and improve communication.',
+    prompts: [
+      'Teach me five useful Yoruba phrases.',
+      'Translate a message into Hausa.',
+      'Help me improve my English.'
+    ]
+  },
+  {
+    name: 'Creative Studio',
+    icon: Image,
+    description: 'Explore creative and image tools.',
+    welcome: 'Welcome to your creative workspace. Develop ideas, stories, concepts and creative projects.',
+    prompts: [
+      'Help me develop a creative business idea.',
+      'Write an inspiring short story.',
+      'Create a concept for a technology brand.'
+    ]
+  }
+];
+const activeTool =
+  tools.find((tool) => tool.name === active) || tools[0];
+
+<div className="chat-welcome">
+  <Sparkles size={23} />
+
+  <h3>Welcome to {activeTool.name}</h3>
+
+  <p>{activeTool.welcome}</p>
+
+  <p>Try one of these suggested tasks:</p>
+
+  <div className="suggested-prompts">
+    {activeTool.prompts.map((prompt) => (
+      <button
+        key={prompt}
+        className="prompt-chip"
+        onClick={() => setMessage(prompt)}
+      >
+        {prompt}
+      </button>
+    ))}
+  </div>
+</div>
 
 export default function App() {
   const [active, setActive] = useState('AI Assistant');
