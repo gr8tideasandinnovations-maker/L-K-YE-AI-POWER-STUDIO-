@@ -30,7 +30,6 @@ export async function onRequestPost({
   language?: string;
   department?: string;
 };
-    };
 
 const { message, language, department } = body;  
 
