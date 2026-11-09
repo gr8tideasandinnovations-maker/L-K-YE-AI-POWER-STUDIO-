@@ -248,20 +248,6 @@ export default function App() {
             </select>
           </div>
 
-          <div className="chat-welcome">
-            <Sparkles size={23} />
-
-            <h3>Hello! Welcome to LÀÁKÀYÈ AI.</h3>
-
-            <p>
-              I'm here to help you think, learn, solve problems
-              and turn ideas into possibilities.
-            </p>
-
-            <p>
-              What would you like us to work on today?
-            </p>
-          </div>
 
           {reply && (
             <div className="chat-welcome">
