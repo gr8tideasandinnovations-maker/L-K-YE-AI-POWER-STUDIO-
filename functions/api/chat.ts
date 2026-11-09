@@ -25,9 +25,7 @@ export async function onRequestPost({
 
   try {
     // Check the request
-    const body = await request.json() as {
-      message?: string;
-      language?: string;
+  
     };
 
     const { message, language } = body;
