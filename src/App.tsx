@@ -248,7 +248,27 @@ export default function App() {
             </select>
           </div>
 
+<div className="chat-welcome">
+  <Sparkles size={23} />
 
+  <h3>Welcome to {activeTool.name}</h3>
+
+  <p>{activeTool.welcome}</p>
+
+  <p>Try one of these suggested tasks:</p>
+
+  <div className="suggested-prompts">
+    {activeTool.prompts.map((prompt) => (
+      <button
+        key={prompt}
+        className="prompt-chip"
+        onClick={() => setMessage(prompt)}
+      >
+        {prompt}
+      </button>
+    ))}
+  </div>
+</div>
           {reply && (
             <div className="chat-welcome">
               <h3>LÀÁKÀYÈ's response</h3>
