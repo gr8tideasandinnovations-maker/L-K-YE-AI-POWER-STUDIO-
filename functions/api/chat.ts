@@ -70,4 +70,69 @@ User message: ${message}`;
       }
     );
 
-    
+   
+    // Read Google's response
+    const data = await geminiResponse.json() as {
+      candidates?: Array<{
+        content?: {
+          parts?: Array<{ text?: string }>;
+        };
+      }>;
+      error?: {
+        message?: string;
+        status?: string;
+      };
+    };
+
+    // Handle errors returned by Google
+    if (!geminiResponse.ok) {
+      console.error("Gemini API error:", {
+        status: geminiResponse.status,
+        message: data.error?.message || "Unknown Gemini API error",
+        code: data.error?.status || "UNKNOWN"
+      });
+
+      return new Response(
+        JSON.stringify({
+          error: `Gemini request failed. Provider HTTP status: ${geminiResponse.status}`,
+          providerStatus: geminiResponse.status
+        }),
+        { status: 502, headers }
+      );
+    }
+
+    // Extract generated text
+    const reply = data.candidates
+      ?.flatMap(candidate => candidate.content?.parts || [])
+      .map(part => part.text || "")
+      .join("")
+      .trim();
+
+    if (!reply) {
+      console.error("Gemini returned no text response.");
+
+      return new Response(
+        JSON.stringify({
+          error: "The AI returned an empty response. Please try again."
+        }),
+        { status: 502, headers }
+      );
+    }
+
+    return new Response(
+      JSON.stringify({ reply }),
+      { status: 200, headers }
+    );
+
+  } catch (error) {
+    console.error("LAAKAYE AI Function exception:", error);
+
+    return new Response(
+      JSON.stringify({
+        error: "The AI service encountered an error. Please try again."
+      }),
+      { status: 500, headers }
+    );
+  }
+      }
+        
