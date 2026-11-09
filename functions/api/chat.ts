@@ -32,7 +32,7 @@ export async function onRequestPost({
 };
     };
 
-  
+const { message, language, department } = body;  
 
     if (!message || typeof message !== "string" || !message.trim()) {
       return new Response(
