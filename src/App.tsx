@@ -85,30 +85,7 @@ const tools = [
     ]
   }
 ];
-const activeTool =
-  tools.find((tool) => tool.name === active) || tools[0];
 
-<div className="chat-welcome">
-  <Sparkles size={23} />
-
-  <h3>Welcome to {activeTool.name}</h3>
-
-  <p>{activeTool.welcome}</p>
-
-  <p>Try one of these suggested tasks:</p>
-
-  <div className="suggested-prompts">
-    {activeTool.prompts.map((prompt) => (
-      <button
-        key={prompt}
-        className="prompt-chip"
-        onClick={() => setMessage(prompt)}
-      >
-        {prompt}
-      </button>
-    ))}
-  </div>
-</div>
 
 export default function App() {
   const [active, setActive] = useState('AI Assistant');
