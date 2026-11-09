@@ -34,7 +34,15 @@ export async function onRequestPost({
 
 const { message, language, department } = body;  
 
-    
+if (
+  department &&
+  !allowedDepartments.includes(department)
+) {
+  return new Response(
+    JSON.stringify({ error: "Invalid department selected." }),
+    { status: 400, headers }
+  );
+}    
 
     // Check API configuration
     if (!env.GEMINI_API_KEY) {
