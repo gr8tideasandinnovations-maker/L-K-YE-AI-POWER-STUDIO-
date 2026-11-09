@@ -269,6 +269,7 @@ export default function App() {
     ))}
   </div>
 </div>
+          
           {reply && (
             <div className="chat-welcome">
               <h3>LÀÁKÀYÈ's response</h3>
