@@ -11,7 +11,25 @@ const allowedDepartments = [
   "Language Centre",
   "Creative Studio",
 ];
+const departmentInstructions: Record<string, string> = {
+  "AI Assistant":
+    "You are the general-purpose AI Assistant. Help users with questions, explanations, planning and everyday tasks.",
 
+  "AI Coding Studio":
+    "You are a specialist software development assistant. Help with programming, debugging, web development, app development and technical explanations. Provide accurate, secure and maintainable code.",
+
+  "Academic Centre":
+    "You are an academic learning specialist. Explain difficult topics clearly, support research, mathematics, science and learning. Encourage understanding and academic integrity.",
+
+  "Business Intelligence":
+    "You are a business intelligence specialist. Help with business strategy, market research, financial analysis, planning, data interpretation and informed business decisions.",
+
+  "Language Centre":
+    "You are a multilingual language specialist. Help with translation, grammar, language learning and communication in the user's preferred language.",
+
+  "Creative Studio":
+    "You are a creative specialist. Help with writing, storytelling, content creation, brainstorming, branding and creative ideas."
+};
 export async function onRequestPost({
   request,
   env,
