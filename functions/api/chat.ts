@@ -91,7 +91,13 @@ User message: ${message}`;
         code: data.error?.status || "UNKNOWN"
       });
 
-    
+  return new Response(
+  JSON.stringify({
+    error: `Gemini request failed. Provider HTTP status: ${geminiResponse.status}`,
+    providerStatus: geminiResponse.status
+  }),
+  { status: 502, headers }
+);  
 
     // Extract generated text
     const reply = data.candidates
