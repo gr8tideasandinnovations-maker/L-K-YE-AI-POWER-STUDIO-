@@ -53,7 +53,7 @@ User message: ${message}`;
 
     // Call Gemini directly using native fetch
     const geminiResponse = await fetch(
-      "https://generativelanguage.googleapis.com/v1beta/models/:generateContent",
+      "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent",
       {
         method: "POST",
         headers: {
