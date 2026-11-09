@@ -79,11 +79,7 @@ export default function App() {
 
       const data = await response.json();
 
-      if (!response.ok) {
-        throw new Error(
-          data.error || 'The AI service could not respond.'
-        );
-      }
+    
 
       setReply(
         data.reply || 'I could not generate a response.'
