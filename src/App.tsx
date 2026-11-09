@@ -121,6 +121,7 @@ export default function App() {
 
   const activeTool =
     tools.find((tool) => tool.name === active) || tools[0];
+  
   async function sendMessage() {
     if (!message.trim() || loading) return;
 
