@@ -16,47 +16,7 @@ import {
   X
 } from 'lucide-react';
 
-const tools = [
-  {
-    name: 'AI Assistant',
-    icon: MessageCircle,
-    description: 'Ask questions and get intelligent answers.'
-  },
-  {
-    name: 'AI Coding Studio',
-    icon: Code,
-    description: 'Write, explain and improve code.'
-  },
-  {
-    name: 'Academic Centre',
-    icon: GraduationCap,
-    description: 'Research, learning and study support.'
-  },
-  {
-    name: 'Business Intelligence',
-    icon: BriefcaseBusiness,
-    description: 'Business planning and data analysis.'
-  },
-  {
-    name: 'Language Centre',
-    icon: Languages,
-    description: 'Communicate across languages.'
-  },
-  {
-    name: 'Creative Studio',
-    icon: Image,
-    description: 'Explore creative and image tools.'
-  }
-];
 
-const languages = [
-  'English',
-  'Nigerian Pidgin',
-  'Yoruba',
-  'Igbo',
-  'Hausa',
-  'French'
-];
 
 export default function App() {
   const [active, setActive] = useState('AI Assistant');
