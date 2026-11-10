@@ -79,7 +79,25 @@ if (
       );
     }
 
-  
+  // Prepare Gemini request
+const selectedDepartment =
+  department || "AI Assistant";
+
+const specialistInstruction =
+  departmentInstructions[selectedDepartment];
+
+const prompt = `You are LÀÁKÀYÈ AI POWER STUDIO.
+
+Your active department is: ${selectedDepartment}.
+
+Specialist instructions:
+${specialistInstruction}
+
+Respond clearly, accurately and helpfully.
+
+Preferred language: ${language || "English"}
+
+User message: ${message}`;
 
     // Call Gemini directly using native fetch
     const geminiResponse = await fetch(
