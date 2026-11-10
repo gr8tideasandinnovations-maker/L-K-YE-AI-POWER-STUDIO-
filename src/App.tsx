@@ -345,7 +345,8 @@ export default function App() {
 
               return (
                 <button
-                  className={`tool-card ${
+  type="button"
+  className={`tool-card ${
                     active === tool.name ? 'selected' : ''
                   }`}
                   key={tool.name}
