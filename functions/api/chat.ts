@@ -79,14 +79,7 @@ if (
       );
     }
 
-    // Prepare Gemini request
-    const prompt = `You are LÀÁKÀYÈ AI POWER STUDIO,
-a helpful multilingual AI assistant.
-Respond clearly, accurately and helpfully.
-
-Preferred language: ${language || "English"}
-
-User message: ${message}`;
+  
 
     // Call Gemini directly using native fetch
     const geminiResponse = await fetch(
