@@ -99,7 +99,49 @@ Preferred language: ${language || "English"}
 
 User message: ${message}`;
 
-    
+// Call Gemini with automatic retries
+const retryableStatuses = [429, 500, 502, 503, 504];
+
+let geminiResponse: Response;
+
+for (let attempt = 1; attempt <= 3; attempt++) {
+  try {
+    geminiResponse = await fetch(
+      "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-goog-api-key": env.GEMINI_API_KEY,
+        },
+        body: JSON.stringify({
+          contents: [
+            {
+              parts: [{ text: prompt }]
+            }
+          ]
+        })
+      }
+    );
+
+    if (
+      geminiResponse.ok ||
+      !retryableStatuses.includes(geminiResponse.status) ||
+      attempt === 3
+    ) {
+      break;
+    }
+  } catch (error) {
+    if (attempt === 3) {
+      throw error;
+    }
+  }
+
+  await new Promise(resolve =>
+    setTimeout(resolve, attempt * 1000)
+  );
+}
+  
 
    
     // Read Google's response
