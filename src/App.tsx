@@ -122,10 +122,11 @@ export default function App() {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-          message: question,
-          language
-        })
+      body: JSON.stringify({
+  message: question,
+  language,
+  department: active
+})
       });
 
       const data = await response.json();
