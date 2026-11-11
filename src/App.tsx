@@ -96,7 +96,7 @@ const tools = [
 
 export default function App() {
   const [active, setActive] = useState('AI Assistant');
- const [autoMode, setAutoMode] = useState(false);
+  const [autoMode, setAutoMode] = useState(false);
   const [language, setLanguage] = useState('English');
   const [message, setMessage] = useState('');
   const [reply, setReply] = useState('');
