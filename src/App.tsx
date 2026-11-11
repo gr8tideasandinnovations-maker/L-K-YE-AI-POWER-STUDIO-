@@ -361,9 +361,7 @@ function selectAutoMode() {
               return (
                 <button
   type="button"
-  className={`tool-card ${
-                    active === tool.name ? 'selected' : ''
-                  }`}
+
                   key={tool.name}
                   onClick={() => selectDepartment(tool.name)}
                 >
