@@ -157,12 +157,7 @@ export default function App() {
     }
   }
 
-  function selectDepartment(name: string) {
-    setActive(name);
-    setReply('');
-    setError('');
-    setMenuOpen(false);
-  }
+
 
   return (
     <div className="app">
