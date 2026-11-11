@@ -164,7 +164,12 @@ function selectDepartment(name: string) {
   setError('');
   setMenuOpen(false);
 }
-
+function selectAutoMode() {
+  setAutoMode(true);
+  setReply('');
+  setError('');
+  setMenuOpen(false);
+}
   return (
     <div className="app">
       <header className="topbar">
