@@ -347,6 +347,14 @@ function selectAutoMode() {
           </div>
 
           <div className="tools-grid">
+            <button
+  type="button"
+  className={`tool-card ${autoMode ? 'selected' : ''}`}
+  onClick={selectAutoMode}
+>
+  <strong>Auto Mode</strong>
+  <span>Let LÀÁKÀYÈ choose the best specialist for your question.</span>
+</button>
             {tools.map((tool) => {
               const Icon = tool.icon;
 
