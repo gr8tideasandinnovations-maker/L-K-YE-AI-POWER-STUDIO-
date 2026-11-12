@@ -43,7 +43,14 @@ export async function onRequestPost({
 
   try {
     // Check the request
- 
+ const body = await request.json() as {
+  message?: string;
+  language?: string;
+  department?: string;
+  autoMode?: boolean;
+};
+
+const { message, language, department, autoMode } = body;
 
   if (!message || typeof message !== "string" || !message.trim()) {
       return new Response(
