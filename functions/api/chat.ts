@@ -94,6 +94,13 @@ if (
 let selectedDepartment: string = "AI Assistant";
 
 if (autoMode === true) {
+  const routingRetryableStatuses = [
+    429, 500, 502, 503, 504
+  ];
+
+  let routingResponse: Response | undefined;
+
+  const routingPrompt = `
   const routingPrompt = `
 You are the LÀÁKÀYÈ Central Agent Manager.
 
