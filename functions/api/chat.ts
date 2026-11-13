@@ -218,7 +218,7 @@ const matchedDepartment = allowedDepartments.find(
 
 } else {
   selectedDepartment = department || "AI Assistant";
-        }
+                                      }
     
   // Prepare Gemini request
 
