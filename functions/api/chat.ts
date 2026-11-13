@@ -126,23 +126,7 @@ User language: ${language || "English"}
 User request: ${message}
 `;
 
-  routingResponse = await fetch(
-    "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-goog-api-key": env.GEMINI_API_KEY,
-      },
-      body: JSON.stringify({
-        contents: [
-          {
-            parts: [{ text: routingPrompt }]
-          }
-        ]
-      })
-    }
-  );
+  
 
   if (!routingResponse.ok) {
     console.error("Agent Manager routing failed:", routingResponse.status);
