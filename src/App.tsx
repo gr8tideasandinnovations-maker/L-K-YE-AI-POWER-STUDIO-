@@ -144,9 +144,7 @@ export default function App() {
         );
       }
 
-      setReply(
-        data.reply || 'I could not generate a response.'
-      );
+    
     } catch (err) {
       setError(
         err instanceof Error
