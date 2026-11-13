@@ -195,9 +195,7 @@ User request: ${message}
     .join("")
     .trim();
 
-  const matchedDepartment = allowedDepartments.find(
-    item => item === routingResult
-  );
+  
 
   if (!matchedDepartment) {
     return new Response(
