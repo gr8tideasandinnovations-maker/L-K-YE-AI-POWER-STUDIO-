@@ -195,7 +195,15 @@ User request: ${message}
     .join("")
     .trim();
 
-  
+  const normalizedRoutingResult = routingResult
+  ?.replace(/^["']|["']$/g, "")
+  .replace(/\s+/g, " ")
+  .trim()
+  .toLowerCase();
+
+const matchedDepartment = allowedDepartments.find(
+  item => item.toLowerCase() === normalizedRoutingResult
+);
 
   if (!matchedDepartment) {
     return new Response(
