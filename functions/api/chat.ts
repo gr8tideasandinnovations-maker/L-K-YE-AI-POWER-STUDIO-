@@ -101,7 +101,6 @@ if (autoMode === true) {
   let routingResponse: Response | undefined;
 
   const routingPrompt = `
-  const routingPrompt = `
 You are the LÀÁKÀYÈ Central Agent Manager.
 
 Choose exactly ONE best specialist for the user's request.
