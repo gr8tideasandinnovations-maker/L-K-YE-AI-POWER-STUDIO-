@@ -67,7 +67,17 @@ if (
     { status: 400, headers }
   );
 }    
-
+if (
+  autoMode !== undefined &&
+  typeof autoMode !== "boolean"
+) {
+  return new Response(
+    JSON.stringify({
+      error: "Invalid Auto Mode setting."
+    }),
+    { status: 400, headers }
+  );
+}
     // Check API configuration
     if (!env.GEMINI_API_KEY) {
       console.error("GEMINI_API_KEY is missing.");
