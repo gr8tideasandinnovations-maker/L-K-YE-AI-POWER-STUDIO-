@@ -144,7 +144,14 @@ export default function App() {
         );
       }
 
-    
+    setReply(
+  data.reply || 'I could not generate a response.'
+);
+
+console.log(
+  'LÀÁKÀYÈ selected department:',
+  data.department
+);
     } catch (err) {
       setError(
         err instanceof Error
