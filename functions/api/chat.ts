@@ -126,7 +126,49 @@ User language: ${language || "English"}
 User request: ${message}
 `;
 
-  
+  for (let attempt = 1; attempt <= 3; attempt++) {
+  try {
+    routingResponse = await fetch(
+      "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-goog-api-key": env.GEMINI_API_KEY,
+        },
+        body: JSON.stringify({
+          contents: [
+            {
+              parts: [{ text: routingPrompt }]
+            }
+          ]
+        })
+      }
+    );
+
+    if (
+      routingResponse.ok ||
+      !routingRetryableStatuses.includes(routingResponse.status) ||
+      attempt === 3
+    ) {
+      break;
+    }
+
+  } catch (error) {
+    console.error(
+      `Agent Manager attempt ${attempt} failed:`,
+      error
+    );
+
+    if (attempt === 3) {
+      throw error;
+    }
+  }
+
+  await new Promise(resolve =>
+    setTimeout(resolve, attempt * 1000)
+  );
+  }
 
   if (!routingResponse.ok) {
     console.error("Agent Manager routing failed:", routingResponse.status);
