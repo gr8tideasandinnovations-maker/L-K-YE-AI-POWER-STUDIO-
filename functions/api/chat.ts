@@ -183,8 +183,7 @@ User request: ${message}
         }
     
   // Prepare Gemini request
-const selectedDepartment =
-  department || "AI Assistant";
+
 
 const specialistInstruction =
   departmentInstructions[selectedDepartment];
