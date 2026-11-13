@@ -294,10 +294,7 @@ for (let attempt = 1; attempt <= 3; attempt++) {
       );
     }
 
-    return new Response(
-      JSON.stringify({ reply }),
-      { status: 200, headers }
-    );
+  
   } catch (error) {
     console.error("LAAKAYE AI Function exception:", error);
 
