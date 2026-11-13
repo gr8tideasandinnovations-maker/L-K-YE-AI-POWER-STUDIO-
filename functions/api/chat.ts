@@ -126,7 +126,7 @@ User language: ${language || "English"}
 User request: ${message}
 `;
 
-  const routingResponse = await fetch(
+  routingResponse = await fetch(
     "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent",
     {
       method: "POST",
