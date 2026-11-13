@@ -205,7 +205,20 @@ const matchedDepartment = allowedDepartments.find(
   item => item.toLowerCase() === normalizedRoutingResult
 );
 
-  
+    if (!matchedDepartment) {
+    return new Response(
+      JSON.stringify({
+        error: "The Agent Manager returned an invalid department. Please try again."
+      }),
+      { status: 502, headers }
+    );
+  }
+
+  selectedDepartment = matchedDepartment;
+
+} else {
+  selectedDepartment = department || "AI Assistant";
+}
     
   // Prepare Gemini request
 
