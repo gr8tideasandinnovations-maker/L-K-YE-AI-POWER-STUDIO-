@@ -90,6 +90,98 @@ if (
       );
     }
 
+// LÀÁKÀYÈ CENTRAL AGENT MANAGER
+let selectedDepartment: string = "AI Assistant";
+
+if (autoMode === true) {
+  const routingPrompt = `
+You are the LÀÁKÀYÈ Central Agent Manager.
+
+Choose exactly ONE best specialist for the user's request.
+
+Available departments:
+
+1. AI Assistant: General questions, explanations and everyday tasks.
+2. AI Coding Studio: Programming, debugging and software development.
+3. Academic Centre: Education, research, mathematics and science.
+4. Business Intelligence: Business strategy, market research and financial analysis.
+5. Language Centre: Translation, grammar and language learning.
+6. Creative Studio: Writing, storytelling, branding and creative ideas.
+
+Rules:
+- Select the single most appropriate department.
+- Choose AI Assistant for general or unclear requests.
+- Do not invent department names.
+- Return only the exact department name.
+- Do not answer the user's question.
+
+User language: ${language || "English"}
+
+User request: ${message}
+`;
+
+  const routingResponse = await fetch(
+    "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-goog-api-key": env.GEMINI_API_KEY,
+      },
+      body: JSON.stringify({
+        contents: [
+          {
+            parts: [{ text: routingPrompt }]
+          }
+        ]
+      })
+    }
+  );
+
+  if (!routingResponse.ok) {
+    console.error("Agent Manager routing failed:", routingResponse.status);
+
+    return new Response(
+      JSON.stringify({
+        error: "Automatic department selection failed. Please try again."
+      }),
+      { status: 502, headers }
+    );
+  }
+
+  const routingData = await routingResponse.json() as {
+    candidates?: Array<{
+      content?: {
+        parts?: Array<{ text?: string }>;
+      };
+    }>;
+  };
+
+  const routingResult = routingData.candidates
+    ?.flatMap(candidate => candidate.content?.parts || [])
+    .map(part => part.text || "")
+    .join("")
+    .trim();
+
+  const matchedDepartment = allowedDepartments.find(
+    item => item === routingResult
+  );
+
+  if (!matchedDepartment) {
+    return new Response(
+      JSON.stringify({
+        error: "The Agent Manager returned an invalid department. Please try again."
+      }),
+      { status: 502, headers }
+    );
+  }
+
+  selectedDepartment = matchedDepartment;
+
+} else {
+  selectedDepartment = department || "AI Assistant";
+        }
+    
   // Prepare Gemini request
 const selectedDepartment =
   department || "AI Assistant";
